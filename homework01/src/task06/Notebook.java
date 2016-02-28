@@ -7,6 +7,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
+ * @author Julia Kamyshova
  * Created by Julia on 26.02.2016.
  */
 public class Notebook {
@@ -17,6 +18,10 @@ public class Notebook {
         this.arrayNotes = new Note[size];
     }
 
+    /**
+     * Add value to array of Notes
+     * @return object of class Note
+     */
     public static Note addNote() {
         System.out.println("Введите запись: ");
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -28,20 +33,38 @@ public class Notebook {
         return null;
     }
 
+    /**
+     * method for delete last note
+     * @param index
+     */
     public void deleteNote(int index) {
         this.arrayNotes[index - 1] = null;
     }
 
+    /**
+     * method for edit note
+     * @param index
+     * @return edited note
+     */
     public Note editNote(int index) {
         return this.arrayNotes[index] = addNote();
     }
 
+    /**
+     * View notes method
+     * @param notebook
+     * @param count
+     */
     public void viewNotes(Notebook notebook, int count) {
         System.out.println("Записи в блокноте: ");
         for (int i = 0; i < count; i++)
             System.out.print(i + ". " + Note.getValueOfNote(notebook.arrayNotes[i]));
     }
 
+    /**
+     * Menu of program
+     * @return selected item of menu
+     */
     public static int menu() {
         Scanner sc = new Scanner(System.in);
         System.out.println(
@@ -53,25 +76,38 @@ public class Notebook {
         return sc.nextInt();
     }
 
+    /**
+     * class Note
+     */
     public static class Note {
 
-        public String note;
+        public String value;
 
-        public Note(String note) {
-            this.note = note;
+        public Note(String value) {
+            this.value = value;
         }
 
+        /**
+         * For output of notes
+         * @param note
+         * @return value of value
+         */
         public static String getValueOfNote(Note note) {
             return note == null ? "" : note.toString();
         }
 
         @Override
         public String toString() {
-            return note + "\n";
+            return value + "\n";
         }
 
     }
 
+    /**
+     * Main method
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         Notebook notebook = new Notebook();
         int countNotes = notebook.arrayNotes.length;
