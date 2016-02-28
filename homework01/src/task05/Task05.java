@@ -16,7 +16,7 @@ public final class Task05 {
             createMatrix(m,n,matrix);
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Введите размерность матрицы в виде натурального числа");
+            System.out.println("Введите размерность матрицы в виде натуральных чисел");
         }
     }
     /**
